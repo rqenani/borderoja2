@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="sq">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Listëpagesa dhe Ditari Kontabilitetit
+  </title>
+  <link href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" rel="stylesheet"/>
+  <link href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.dataTables.min.css" rel="stylesheet"/>
+  <link href="assets/css/style.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <div class="navbar">
+   Listëpagesa dhe Ditari i Kontabilitetit
+  </div>
+  <div class="container">
+   <div class="header">
+    <h1>
+     DEKLARATA "Listëpagesa e Kontributeve"
+    </h1>
+   </div>
+   <div class="notes">
+    <strong>
+     Shënim:
+    </strong>
+    Nëse paga bruto e një punonjësi është mbi 176,416 lekë, fushat për kontributet duhet të plotësohen manualisht për të respektuar ligjin shqiptar. Verifikoni të gjitha të dhënat para eksportimit ose printimit.
+   </div>
+   <div class="config-section">
+    <label for="numEmployees">
+     Numri i punonjësve për të shtuar:
+    </label>
+    <input id="numEmployees" min="1" placeholder="Vendos numrin" type="number"/>
+    <label for="baseSalary">
+     Paga për çdo punonjës:
+    </label>
+    <input id="baseSalary" min="40000" placeholder="Vendos pagën" type="number"/>
+    <button class="btn" id="addMultipleEmployees">
+     Shto Punonjës
+    </button>
+   </div>
+   <table class="display" id="listTable">
+    <thead>
+     <tr>
+      <th>
+       Numri Personal
+      </th>
+      <th>
+       Emri Mbiemri
+      </th>
+      <th>
+       Paga Bruto
+      </th>
+      <th>
+       Paga mbi të cilën llogariten kontributet
+      </th>
+      <th>
+       Sig. Shoqërore Punëdhënësi
+      </th>
+      <th>
+       Sig. Shoqërore Punonjësi
+      </th>
+      <th>
+       Sig. Shoqërore Totali
+      </th>
+      <th>
+       Sig. Shënd. Punonjësi
+      </th>
+      <th>
+       Sig. Shënd. Punëdhënësi
+      </th>
+      <th>
+       Sig. Shënd. Totali
+      </th>
+      <th>
+       Sig. Suplementare Punonjësi
+      </th>
+      <th>
+       Sig. Suplementare Punëdhënësi
+      </th>
+      <th>
+       Sig. Suplementare Totali
+      </th>
+      <th>
+       TAP
+      </th>
+      <th>
+       Paga Neto
+      </th>
+      <th>
+       Veprim
+      </th>
+     </tr>
+    </thead>
+    <tbody>
+    </tbody>
+    <tfoot>
+     <tr>
+      <th colspan="2">
+       Totalet
+      </th>
+      <td id="totalGrossSalary">
+       0
+      </td>
+      <td id="totalTaxableSalary">
+       0
+      </td>
+      <td id="totalEmployerSocial">
+       0
+      </td>
+      <td id="totalEmployeeSocial">
+       0
+      </td>
+      <td id="totalSocial">
+       0
+      </td>
+      <td id="totalHealthInsuranceEmployee">
+       0
+      </td>
+      <td id="totalHealthInsuranceEmployer">
+       0
+      </td>
+      <td id="totalHealthInsurance">
+       0
+      </td>
+      <td id="totalEmployeeSupplement">
+       0
+      </td>
+      <td id="totalEmployerSupplement">
+       0
+      </td>
+      <td id="totalSupplement">
+       0
+      </td>
+      <td id="totalTAP">
+       0
+      </td>
+      <td id="totalNetSalary">
+       0
+      </td>
+      <td>
+      </td>
+     </tr>
+    </tfoot>
+   </table>
+   <h2>
+    Ditari i Kontabilitetit
+   </h2>
+   <table class="display" id="ditariTable">
+    <thead>
+     <tr>
+      <th>
+       Pershkrimi
+      </th>
+      <th>
+       Shuma
+      </th>
+      <th>
+       Llogaria
+      </th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr>
+      <td>
+       Paga Bruto
+      </td>
+      <td id="ditariGrossSalary">
+       0
+      </td>
+      <td>
+       641
+      </td>
+     </tr>
+     <tr>
+      <td>
+       Shpenzime për kontribute (Punëdhënësi)
+      </td>
+      <td id="ditariEmployerSocial">
+       0
+      </td>
+      <td>
+       644
+      </td>
+     </tr>
+     <tr>
+      <td>
+       Paga Neto
+      </td>
+      <td id="ditariNetSalary">
+       0
+      </td>
+      <td>
+       421
+      </td>
+     </tr>
+     <tr>
+      <td>
+       TAP
+      </td>
+      <td id="ditariTAP">
+       0
+      </td>
+      <td>
+       442
+      </td>
+     </tr>
+     <tr>
+      <td>
+       Sigurimet Totale
+      </td>
+      <td id="ditariTotalInsurance">
+       0
+      </td>
+      <td>
+       431
+      </td>
+     </tr>
+     <tr>
+      <td>
+       Diferenca
+      </td>
+      <td id="ditariDifference">
+       Balancë
+      </td>
+      <td>
+      </td>
+     </tr>
+    </tbody>
+   </table>
+  </div>
+  <div class="footer">
+   Kjo platformë u zhvillua për përdorim të brendshëm nga Qenani Consulting Office në Elbasan, me qëllim trajnimin dhe llogaritjen e kontributeve në raste specifike. © 2024.
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js">
+  </script>
+  <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js">
+  </script>
+  <script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js">
+  </script>
+  <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js">
+  </script>
+  <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js">
+  </script>
+  <script src="assets/js/script.js">
+  </script>
+ </body>
+</html>
